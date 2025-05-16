@@ -40,7 +40,7 @@ class School(Base):
 class Course(Base):
     __tablename__ = 'course'
 
-    CourseCode = Column(String(10), primary_key=True, index=True)
+    CourseCode = Column(Integer, primary_key=True, index=True)
     Name = Column(String(100))
     Credit = Column(Integer)
 
@@ -53,5 +53,27 @@ class Classroom(Base):
     Capacity = Column(Integer)
 
 class Enrollment(Base):
-    __tablename__= 'enrolment'
-    StudentID = Column(Integer,ForeignKey())
+    __tablename__= 'enrollment'
+
+    EnrollmentDate = Column(Date)
+    StudentID = Column(Integer,ForeignKey('student.StudentID'),primary_key=True)
+    CourseCode= Column(Integer,ForeignKey('course.CourseCode'),primary_key=True )
+    
+
+class Teaches(Base):
+    __tablename__ ='teaches'
+
+    TeacherID = Column(Integer,ForeignKey('teacher.TeacherID'),primary_key=True)
+    CourseCode= Column(Integer,ForeignKey('course.CourseCode'),primary_key=True )
+
+class HeldIn(Base):
+    __tablename__ = 'heldin'
+
+    CourseCode= Column(Integer,ForeignKey('course.CourseCode'),primary_key=True )
+    ClassroomID = Column(Integer , ForeignKey('classroom.ClassroomID'),primary_key=True)
+
+class WorksFor(Base):
+    __tablename__ = 'works_for'
+
+    StaffID = Column(Integer, ForeignKey('administrative_staff.StaffID'), primary_key=True)
+    SchoolID = Column(Integer, ForeignKey('school.SchoolID'), primary_key=True)
