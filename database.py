@@ -7,4 +7,4 @@ DATABASE_URL = "mysql+mysqlconnector://root:changeme@localhost:3306/high_school_
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
-
+Session = SessionLocal()
