@@ -70,7 +70,23 @@ def update_student():
         print("Student not found.")  
 
 
+def main():
+    while True:
+        print("\n1. Add Student\n2. List Students\n3. Delete Student\n4. Update Student\n5. Exit")
+        choice = input("Choose an option: ")
 
+        if choice == '1':
+            add_student()
+        elif choice == '2':
+            list_students()
+        elif choice == '3':
+            delete_student()
+        elif choice == '4':
+            update_student()  
+        elif choice == '5':
+            break
+        else:
+            print("Invalid choice!")
 
 
 main()
